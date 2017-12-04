@@ -4,3 +4,4 @@ project(resursive)
 set(CMAKE_CXX_STANDARD 11)
 
 add_executable(resursive_search resursive_search.cpp)
+add_executable(binary_search binary_search.cpp)
