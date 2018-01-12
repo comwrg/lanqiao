@@ -4,4 +4,5 @@ project("past paper questions")
 set(CMAKE_CXX_STANDARD 11)
 
 add_executable(seventh_c_A_1 Seventh_lanqiao_personal_provincial_race/C_language_group_A/1.cpp)
+add_executable(seventh_c_A_2 Seventh_lanqiao_personal_provincial_race/C_language_group_A/2.cpp)
 add_executable(seventh_c_A_3 Seventh_lanqiao_personal_provincial_race/C_language_group_A/3.cpp)
