@@ -80,7 +80,7 @@ bool foo(const int num, const int left, int arr[4], const int pos) {
         // so we think that `i` loop from `sqt` to `0` is more efficient than `i` loop from `0` to `sqt`
         arr[pos] = i;
         bool res = foo(num, left - i*i, arr, pos+1);
-//                               ~~~
+//                                 ~~~
         // `pow(i, 2)` spend time more than `i*i` spend time,
         // i use `pow(i, 2)` firstly, but when i use `i*i` to replace `pow(i, 2)`,
         // save lots of time immediately, but i don't know why.
