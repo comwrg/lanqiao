@@ -139,6 +139,30 @@ fraction findMaxBase(const fraction arr[], const int len) {
 }
 
 int main() {
+    /**
+     * step:
+     *          e.g.{549755813888, 524288, 2}
+     * 1. reverse order.    e.g.{549755813888, 524288, 2}
+     * 2. pairwise.         e.g.{549755813888/524288, 524288/2}
+     * 3. simply.           e.g.{1048576/1, 262144/1}
+     * 4. reorganization, molecular and molecular together,
+     *    denominator and denominator together.              e.g.{
+     *                                                                {1048576, 1}, // group molecular
+     *                                                                {262144, 1},  // group denominator
+     *                                                           }
+     * 5. handle group molecular
+     *      5.1. reverse order. e.g.{1048576, 262144}
+     *      5.2. pairwise.      e.g.{1048576 / 262144}
+     *      5.3. divided, have a situation need attention,
+     *           if molecular equal to denominator, set the result is molecular. e.g.{4}
+     *      5.4. judgment that the logarithm of A to B whether a integer.
+     *           A belongs to the result of reverse order, e.g.{1048576, 262144}.
+     *           B is the result of divided.
+     *           if not have a integer, square the result of divider and try again.
+     *
+     * 6. handle group denominator same with handle group molecules
+     * 7. combine the result of handle group molecular and the result of handle group denominator.
+     */
     int len = 4;
 //    long long arr[len] = {1250, 200, 32};
 //    long long arr[len] = {549755813888, 524288, 2};
