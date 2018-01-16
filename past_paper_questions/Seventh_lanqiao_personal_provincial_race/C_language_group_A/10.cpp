@@ -113,7 +113,7 @@ long long findSameBase(const long long arr[], const int len) {
         long long logarithm = log(arr[i], base);
         // if logarithm equal to zero, that's mean cannot find logarithm, the base is not valid
         if (logarithm == 0) {
-            // square base
+            // square root base
             base = sqrt(base);
             // set `i` is -1 to make the loop restart
             i = -1;
@@ -160,7 +160,7 @@ int main() {
      *      5.4. judgment that the logarithm of A to B whether a integer.
      *           A belongs to the result of reverse order, e.g.{1048576, 262144}.
      *           B is the result of divided.
-     *           if not have a integer, square the result of divider and try again.
+     *           if not have a integer, square root the result of divider and try again.
      *
      * 6. handle group denominator same with handle group molecules
      * 7. combine the result of handle group molecular and the result of handle group denominator.
