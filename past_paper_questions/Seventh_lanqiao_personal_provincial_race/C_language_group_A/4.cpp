@@ -32,7 +32,7 @@ int partition(int a[], int p, int r) {
         if (i >= j) break;
         swap(a, i, j);
     }
-    // ______________________; // for (int z = p; z < j; z++) a[z] = a[z+1]; a[j] = x;
+    // ______________________; // swap(a, p, j);
     return j;
 }
 
