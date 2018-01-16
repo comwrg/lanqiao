@@ -125,14 +125,16 @@ long long findSameBase(const long long arr[], const int len) {
 fraction findMaxBase(const fraction arr[], const int len) {
     long long marr[len], darr[len];
     int flen = len;
+    int index = 0;
     for (int i = 0; i < len; i++) {
         // mean molecular and denominator equal one both
         if (arr[i].molecular == arr[i].denominator) {
             flen--;
             continue;
         }
-        marr[i] = arr[i].molecular;
-        darr[i] = arr[i].denominator;
+        marr[index] = arr[i].molecular;
+        darr[index] = arr[i].denominator;
+        index++;
     }
     fraction f(findSameBase(marr, flen), findSameBase(darr, flen));
     return f;
