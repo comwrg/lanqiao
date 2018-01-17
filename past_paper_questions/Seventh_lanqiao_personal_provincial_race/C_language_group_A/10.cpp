@@ -101,16 +101,16 @@ long long findSameBase(const long long arr[], const int len) {
     // reverse sort
     sort(arrCopy, arrCopy+len); reverse(arrCopy, arrCopy+len);
     for (int i = 0; i < len-1; i++) {
-        qarr[i] = arr[i] / arr[i+1];
+        qarr[i] = arrCopy[i] / arrCopy[i+1];
         // mean `arr[i]` equal to `arr[i+1]`
         if (qarr[i] == 1)
-            qarr[i] = arr[i];
+            qarr[i] = arrCopy[i];
     }
     // set minimum is base
     long long base = min(qarr, len-1);
     for (int i = 0; i < len; i++) {
         // to check out that base is valid.
-        long long logarithm = log(arr[i], base);
+        long long logarithm = log(arrCopy[i], base);
         // if logarithm equal to zero, that's mean cannot find logarithm, the base is not valid
         if (logarithm == 0) {
             // square root base
