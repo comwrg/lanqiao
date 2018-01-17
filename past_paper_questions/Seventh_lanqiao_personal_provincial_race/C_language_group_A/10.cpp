@@ -97,7 +97,7 @@ long long min(const long long arr[], int len) {
 long long findSameBase(const long long arr[], const int len) {
     long long qarr[len-1];
     long long arrCopy[len];
-    memcpy(arrCopy, arr, len);
+    memcpy(arrCopy, arr, sizeof(arrCopy));
     // reverse sort
     sort(arrCopy, arrCopy+len); reverse(arrCopy, arrCopy+len);
     for (int i = 0; i < len-1; i++) {
