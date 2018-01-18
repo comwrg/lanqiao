@@ -16,3 +16,4 @@ add_executable(seventh_provincial_c_A_10 Seventh_lanqiao_personal_provincial_rac
 
 add_executable(seventh_finals_c_A_1 Seventh_lanqiao_personal_finals_race/C_language_group_A/1.cpp)
 add_executable(seventh_finals_c_A_3 Seventh_lanqiao_personal_finals_race/C_language_group_A/3.cpp)
+add_executable(seventh_finals_c_A_4 Seventh_lanqiao_personal_finals_race/C_language_group_A/4.cpp)
