@@ -18,3 +18,5 @@ add_executable(seventh_finals_c_A_1 Seventh_lanqiao_personal_finals_race/C_langu
 add_executable(seventh_finals_c_A_3 Seventh_lanqiao_personal_finals_race/C_language_group_A/3.cpp)
 add_executable(seventh_finals_c_A_4 Seventh_lanqiao_personal_finals_race/C_language_group_A/4.cpp)
 add_executable(seventh_finals_c_A_5 Seventh_lanqiao_personal_finals_race/C_language_group_A/5.cpp)
+
+add_executable(Wannafly_challenge_8_A Wannafly_challenge_8/A.cpp)
