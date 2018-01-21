@@ -21,3 +21,5 @@ add_executable(seventh_finals_c_A_5 Seventh_lanqiao_personal_finals_race/C_langu
 
 add_executable(Wannafly_challenge_8_A Wannafly_challenge_8/A.cpp)
 add_executable(Wannafly_challenge_8_B Wannafly_challenge_8/B.cpp)
+
+add_executable(2018_lq_winter_first_A 2018_lanqiao_winter_vacation_camp/The_first_game/A.cpp)
