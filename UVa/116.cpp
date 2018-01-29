@@ -19,7 +19,6 @@ ifstream fin; void rdIn(const string& filename) {fin.open(filename); if (fin.goo
 int m, n; // m <= 10; n <= 100
 int data[10][100];
 int dp[10][100];
-int path[10][100];
 
 int handle_x(int x) {
     if (x == -1)
@@ -60,7 +59,6 @@ int main() {
         int x = 0;
         for (int i = 0; i < m; i++) {
             int v = foo( m, 0);
-            path[i][0] = i;
             if (dp[x][0] > v) {
                 x = i;
             }
