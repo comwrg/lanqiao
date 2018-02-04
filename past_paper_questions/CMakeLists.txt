@@ -27,4 +27,6 @@ add_executable(2018_lq_winter_first_F 2018_lanqiao_winter_vacation_camp/The_firs
 add_executable(2018_lq_winter_first_H 2018_lanqiao_winter_vacation_camp/The_first_game/H.cpp)
 add_executable(2018_lq_winter_first_I 2018_lanqiao_winter_vacation_camp/The_first_game/I.cpp)
 
+add_executable(2018_lq_winter_third_A 2018_lanqiao_winter_vacation_camp/The_third_game/A.cpp)
+
 add_executable(Nowcoder_11_A Nowcoder_practice_race_11/A.cpp)
