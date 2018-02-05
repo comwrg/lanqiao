@@ -2,7 +2,7 @@
 using namespace std;
 
 /**
- *            |  0                              (i == 0 or j == 0)
+ *            |  0                              (i < 0 or j < 0)
  * dp[i][j] = |  dp[i-1][j-1] + 1               (i, j > 0, Xi == Yj)
  *            |  max(dp[i][j-1], dp[i-1][j])    (i, j > 0, Xi != Yj)
  */
@@ -13,7 +13,7 @@ int data_b[] = {2, 3, 5, 6, 9, 8, 4}; const int len_b = sizeof(data_b) / sizeof(
 int dp[len_a][len_b];
 
 int LCS(const int i, const int j) {
-    if (i == 0 || j == 0) {
+    if (i < 0 || j < 0) {
         return 0;
     }
 
