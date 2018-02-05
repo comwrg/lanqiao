@@ -13,18 +13,16 @@ int main() {
         int cur;
         for (int i = 2; i <= n; i++) {
             div_t d; memset(&d, 0, sizeof(d));
-            cur = 0;
-            for (; res[cur] != -1; cur++) {
+            for (cur = 0; res[cur] != -1; cur++) {
                 res[cur] *= i;
                 res[cur] += d.quot;
                 d = div(res[cur], 10);
                 res[cur] = d.rem;
             }
-            while (d.quot) {
+            for (; d.quot; cur++) {
                 res[cur] = d.quot;
                 d = div(res[cur], 10);
                 res[cur] = d.rem;
-                cur++;
             }
         }
 
