@@ -24,6 +24,7 @@ add_executable(Wannafly_challenge_8_B Wannafly_challenge_8/B.cpp)
 
 add_executable(2018_lq_winter_first_A 2018_lanqiao_winter_vacation_camp/The_first_game/A.cpp)
 add_executable(2018_lq_winter_first_B 2018_lanqiao_winter_vacation_camp/The_first_game/B.cpp)
+add_executable(2018_lq_winter_first_C 2018_lanqiao_winter_vacation_camp/The_first_game/C.cpp)
 add_executable(2018_lq_winter_first_F 2018_lanqiao_winter_vacation_camp/The_first_game/F.cpp)
 add_executable(2018_lq_winter_first_H 2018_lanqiao_winter_vacation_camp/The_first_game/H.cpp)
 add_executable(2018_lq_winter_first_I 2018_lanqiao_winter_vacation_camp/The_first_game/I.cpp)
