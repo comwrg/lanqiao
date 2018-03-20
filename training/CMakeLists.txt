@@ -7,3 +7,5 @@ add_executable(day1_0 day1/0.cpp)
 add_executable(day1_1 day1/1.cpp)
 add_executable(day1_2 day1/2.cpp)
 add_executable(day1_3 day1/3.cpp)
+
+add_executable(day2_1 day2/1.cpp)
