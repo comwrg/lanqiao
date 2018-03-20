@@ -27,21 +27,26 @@ int main() {
         int i = 0, j = 0;
         while (j < n) {
             if (stk.empty()) {
+                // the stack is empty have no choice only to push
                 if (i >= n) {
+                    // fail
                     break;
                 }
                 stk.push(data[IN][i++]);
                 record.push_back(IN);
             }
             if (stk.top() == data[OUT][j]) {
+                // pop if equal
                 j++;
                 stk.pop();
                 record.push_back(OUT);
-            } else if (i < n) {
+            } else {
+                // not equal, so push continue
+                 if (i >= n) {
+                     break;
+                 }
                 stk.push(data[IN][i++]);
                 record.push_back(IN);
-            } else {
-                break;
             }
         }
 
