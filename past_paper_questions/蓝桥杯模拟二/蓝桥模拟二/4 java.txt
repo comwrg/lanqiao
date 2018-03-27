@@ -1,0 +1,48 @@
+import java.util.*;
+import java.math.*;
+
+public class Main {
+    public static final int N = 10010;
+    public static char[] olddata = new char[N];
+    public static char[] newdata = new char[N];
+    public static long olds = 0;
+    public static long news = 0;
+
+    public static void swit() {
+		long n = 0, flag = 1;
+    	for (int i = 0; i < olddata.length; ++i) {
+	    	if (olddata[i] == '-') {
+	    		flag = -1;
+	    	}
+	    	else if(olddata[i] > '9') {
+	    		n = n * olds + olddata[i] - 55;
+	    	}
+    		else {
+    			n = n * olds + olddata[i] - '0';
+    		}
+    	}
+    	n *= flag;
+        String s = "";
+    	long tmp = 0;
+    	while(n != 0) {
+	    	tmp = n % news;
+	    	n /= news;
+	    	if (tmp >= 10) {
+		    	s = String.valueOf((char)(tmp + 55)) + s;
+		    }
+		    else {
+		    	/*在这里填写必要的代码*/
+		    }
+	    }
+		System.out.println(s);
+    }
+
+    public static void main(String[] args)
+    {
+        Scanner cin = new Scanner(System.in);
+        olds = cin.nextLong();
+        news = cin.nextLong();
+        olddata = cin.next().toCharArray();
+        swit();
+    }
+}
