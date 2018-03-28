@@ -28,7 +28,7 @@ void mult() {
 int main() {
     memcpy(data1, data, sizeof(data));
     memcpy(data2, data, sizeof(data));
-    for (int i = 0; i < 5; i++) {
+    for (int i = 0; i < 4; i++) {
         mult();
         memcpy(data1, ans, sizeof(data));
     }
