@@ -26,11 +26,12 @@ int main() {
     count("../C语言C组/2/C.txt", 1);
 
     int cnt = 0;
-    for (int i : v) {
-        auto lt = mp.find(i);
-        if (lt != mp.end() and lt->second == 2) {
-            cnt++;
-        }
+    for (auto item : mp) {
+        if (item.second != 2)
+            continue;
+        if (find(v.begin(), v.end(), item.first) != v.end())
+            continue;
+        cnt++;
     }
     cout << cnt;
 
