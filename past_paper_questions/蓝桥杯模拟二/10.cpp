@@ -5,7 +5,7 @@ void debug(const char * __format, ...) { if (!fin.good()) return; va_list argv; 
 
 int main() {
     rdIn("data.txt");
-  
+    // TODO
   
     return 0;
 }
