@@ -77,7 +77,7 @@ int main() {
             }
             else if (str[i] == ',') {
             }
-            else if (str[i] == '*' or str[i] == '/' or str[i] == '+' or str[i] == '-' /*在这里填写必要的代码*/) {
+            else if (op.empty() or priority(str[i]) > priority(op.top())/*在这里填写必要的代码*/) {
                 op.push(str[i]);
             }
             else {
