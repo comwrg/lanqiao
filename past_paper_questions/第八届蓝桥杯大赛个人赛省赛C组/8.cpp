@@ -1,3 +1,4 @@
+// DO NOT KNOW THE CODE IS CORRECT OR NOT
 #include <bits/stdc++.h>
 using namespace std;
 ifstream fin; void rdIn(const string& filename) {fin.open(filename); if (fin.good()) { cin.rdbuf(fin.rdbuf()); freopen(filename.c_str(), "r", stdin); } }
