@@ -17,8 +17,7 @@ void arrange(int num) {
         if (!vis[i]) {
             int j;
             for (j = i + 1; j < len; ++j) {
-                if (/*在这里填写必要的代码*/) {
-                    printf("%d, %d\n", i, j);
+                if (str[i] == str[j] and vis[j] /*在这里填写必要的代码*/) {
                     break;
                 }
             }
