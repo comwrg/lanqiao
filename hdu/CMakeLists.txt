@@ -4,6 +4,7 @@ project(hdu)
 set(CMAKE_CXX_STANDARD 11)
 
 add_executable(1000 1000.cpp)
+add_executable(1001 1001.cpp)
 add_executable(1004 1004.cpp)
 add_executable(1010 1010.cpp)
 add_executable(1013 1013.cpp)
