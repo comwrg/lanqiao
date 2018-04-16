@@ -1,5 +1,13 @@
 # hdu thinking
 
+## 1003
+this question i didn't expect to do with dp. <br/>
+firstly, i use sum(i) - min(sum(0)->sum(i)), but it's not effect.
+
+then i searched answer code, i can't understand why state transition equation is
+`dp(n) = max(dp(n)+data(n), data(n))`.
+later, i reaziled that i forgot nature of dp is optimal substructure.
+
 ## 1016
 这题耗费很长时间在一个莫名其妙的Bug上
 应该是OJ上的Bug， 用的OJ是 http://acm.hdu.edu.cn/
