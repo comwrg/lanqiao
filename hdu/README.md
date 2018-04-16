@@ -8,6 +8,9 @@ then i searched answer code, i can't understand why state transition equation is
 `dp(n) = max(dp(n)+data(n), data(n))`.
 later, i reaziled that i forgot nature of dp is optimal substructure.
 
+# 1005
+https://blog.csdn.net/hurmishine/article/details/51333005
+
 ## 1016
 这题耗费很长时间在一个莫名其妙的Bug上
 应该是OJ上的Bug， 用的OJ是 http://acm.hdu.edu.cn/
