@@ -14,12 +14,27 @@ int main() {
         while (n--) {
             double x, y;
             scanf("%lf %lf", &x, &y);
-            for (auto o : s) {
-                minv = min(minv, pow(x-o.first, 2) + pow(y-o.second, 2));
+            auto p = make_pair(x, y);
+            auto it = s.find(p);
+            if (it != s.end()) {
+                minv = 0;
+                break;
             }
-            s.insert(make_pair(x, y));
+            s.insert(p);
+            auto f = s.find(p);
+            it = f;
+            while (it++ != --s.end() and it->first - x < minv and abs(it->second - y) < minv) {
+                minv = min(minv, sqrt(pow(x-it->first, 2) + pow(y-it->second, 2)));
+            }
+            it = f;
+            while (it-- != s.begin() and x - it->first < minv) {
+                if (abs(it->second - y) >= minv)
+                    continue;
+                minv = min(minv, sqrt(pow(x-it->first, 2) + pow(y-it->second, 2)));
+            }
+
         }
-        printf("%.2lf", sqrt(minv)/2);
+        printf("%.2lf", minv/2);
         printf("\n");
     }
 
