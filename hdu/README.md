@@ -18,6 +18,11 @@ http://acm.hdu.edu.cn/discuss/problem/post/reply.php?postid=9537&messageid=2&dee
 idea
 http://www.voidcn.com/article/p-dgpefnqe-zu.html
 
+i suddenly realized what i made mistake is
+i shouldn't from time deduces degree range is valid,
+it's must cause precision error,
+i should from degree range deduces time
+
 ## 1016
 这题耗费很长时间在一个莫名其妙的Bug上
 应该是OJ上的Bug， 用的OJ是 http://acm.hdu.edu.cn/
