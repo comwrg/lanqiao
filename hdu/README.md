@@ -11,6 +11,10 @@ later, i reaziled that i forgot nature of dp is optimal substructure.
 # 1005
 https://blog.csdn.net/hurmishine/article/details/51333005
 
+# 1006
+find reason why not simulate
+http://acm.hdu.edu.cn/discuss/problem/post/reply.php?postid=9537&messageid=2&deep=1
+
 ## 1016
 这题耗费很长时间在一个莫名其妙的Bug上
 应该是OJ上的Bug， 用的OJ是 http://acm.hdu.edu.cn/
