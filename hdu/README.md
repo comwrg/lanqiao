@@ -13,6 +13,7 @@ https://blog.csdn.net/hurmishine/article/details/51333005
 
 ## 1007 (最近点对)
 
+## 1009 (greedy)
 
 ## 1016
 这题耗费很长时间在一个莫名其妙的Bug上
