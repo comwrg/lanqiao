@@ -4,6 +4,45 @@ ifstream fin; void rdIn(const string& filename) {fin.open(filename); if (fin.goo
 void debug(const char * __format, ...) { if (!fin.good()) return; va_list argv; __builtin_va_start(argv, __format); vprintf(__format, argv); va_end(argv); }
 
 typedef pair<double, double> pdd;
+vector<pdd> data;
+
+double dis(int a, int b) {
+    auto pa = data.at(a);
+    auto pb = data.at(b);
+    return sqrt(pow(pa.first-pb.first, 2) + pow(pa.second-pb.second, 2));
+}
+
+// [l ,r)
+double divide(int l, int r) {
+    if (r - l == 1) {
+        return 0;
+    }
+    if (r - l == 2) {
+        // two elements
+        return dis(l, l+1);
+    }
+    if (r - l == 3) {
+        // three elements
+        double res[] = {
+                dis(l+0, l+1),
+                dis(l+0, l+2),
+                dis(l+1, l+2),
+        };
+        return *min_element(res, res+3);
+    }
+    int mid = (l+r) / 2;
+    double m = min(divide(l, mid), divide(mid, r));
+    for (int i = mid; i < r; i++) {
+        for (int j = mid-1; j >= l; j--) {
+            if (data.at(i).first - data.at(j).first >= m)
+                break;
+            if (abs(data.at(i).second - data.at(j).second) >= m)
+                continue;
+            m = min(m, dis(i, j));
+        }
+    }
+    return m;
+}
 
 int main() {
     rdIn("data.txt");
@@ -21,18 +60,11 @@ int main() {
                 break;
             }
             s.insert(p);
-            auto f = s.find(p);
-            it = f;
-            while (it++ != --s.end() and it->first - x < minv and abs(it->second - y) < minv) {
-                minv = min(minv, sqrt(pow(x-it->first, 2) + pow(y-it->second, 2)));
-            }
-            it = f;
-            while (it-- != s.begin() and x - it->first < minv) {
-                if (abs(it->second - y) >= minv)
-                    continue;
-                minv = min(minv, sqrt(pow(x-it->first, 2) + pow(y-it->second, 2)));
-            }
-
+        }
+        if (minv) {
+            data.clear();
+            copy(s.begin(), s.end(), back_inserter(data));
+            minv = divide(0, data.size());
         }
         printf("%.2lf", minv/2);
         printf("\n");
