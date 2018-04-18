@@ -14,9 +14,6 @@ double dis(int a, int b) {
 
 // [l ,r)
 double divide(int l, int r) {
-    if (r - l == 1) {
-        return 0;
-    }
     if (r - l == 2) {
         // two elements
         return dis(l, l+1);
@@ -32,15 +29,45 @@ double divide(int l, int r) {
     }
     int mid = (l+r) / 2;
     double m = min(divide(l, mid), divide(mid, r));
-    for (int i = mid; i < r; i++) {
-        for (int j = mid-1; j >= l; j--) {
-            if (data.at(i).first - data.at(j).first >= m)
+
+
+    vector<int> rmaybe;
+    rmaybe.push_back(mid);
+    auto pmid = data.at(mid);
+    double miny = pmid.second;
+    double maxy = pmid.second;
+    for (int i = mid+1; i < r; i++) {
+        auto pi = data.at(i);
+        if (pi.first - pmid.first > m)
+            break;
+        miny = min(miny, pi.second);
+        maxy = max(maxy, pi.second);
+        rmaybe.push_back(i);
+    }
+    maxy += m;
+    miny -= m;
+    vector<int> lmaybe;
+    for (int i = mid-1; i >= l; i--) {
+        auto pi = data.at(i);
+        if (pmid.first - pi.first > m)
+            break;
+        if (pi.second > maxy or pi.second < miny)
+            continue;
+        lmaybe.push_back(i);
+    }
+
+    for (int i : rmaybe) {
+        for (int j : lmaybe) {
+            auto pi = data.at(i);
+            auto pj = data.at(j);
+            if (pi.first - pj.first > m)
                 break;
-            if (abs(data.at(i).second - data.at(j).second) >= m)
+            if (abs(pi.second - pj.second) > m)
                 continue;
             m = min(m, dis(i, j));
         }
     }
+
     return m;
 }
 
