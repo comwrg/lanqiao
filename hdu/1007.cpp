@@ -84,7 +84,6 @@ int main() {
             auto it = s.find(p);
             if (it != s.end()) {
                 minv = 0;
-                break;
             }
             s.insert(p);
         }
