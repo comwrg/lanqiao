@@ -15,6 +15,8 @@ https://blog.csdn.net/hurmishine/article/details/51333005
 
 ## 1009 (greedy)
 
+## 1011 (树状dp)
+
 ## 1016
 这题耗费很长时间在一个莫名其妙的Bug上
 应该是OJ上的Bug， 用的OJ是 http://acm.hdu.edu.cn/
