@@ -15,7 +15,7 @@ https://blog.csdn.net/hurmishine/article/details/51333005
 
 ## 1009 (greedy)
 
-## 1011 (树状dp)
+## 1011 (树状dp + 分组背包)
 
 ## 1016
 这题耗费很长时间在一个莫名其妙的Bug上
