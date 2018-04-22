@@ -6,13 +6,13 @@ void debug(const char * __format, ...) { if (!fin.good()) return; va_list argv; 
 const int NMAX = 101;
 // n courses, m days
 int n, m;
-// data[i][j], profit in course i spend j days
+// profit[i][j], profit in course i spend j days
 int profit[NMAX][NMAX];
 int dp[NMAX][NMAX];
 
 // max value of first `course` spend `days` days
 int foo(int course, int days) {
-    if (course < 0)
+    if (course < 1)
         return 0;
     if (dp[course][days])
         return dp[course][days];
