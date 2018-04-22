@@ -12,7 +12,7 @@ int dp[NMAX][NMAX];
 
 // max value of first `course` spend `days` days
 int foo(int course, int days) {
-    if (course < 0)
+    if (course < 1)
         return 0;
     if (dp[course][days])
         return dp[course][days];
