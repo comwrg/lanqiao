@@ -1,4 +1,5 @@
 # hdu thinking
+http://acm.hdu.edu.cn/typeclass.php
 
 ## 1003
 this question i didn't expect to do with dp. <br/>
