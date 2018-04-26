@@ -9,6 +9,7 @@ int n, m;
 // profit[i][j], profit in course i spend j days
 int profit[NMAX][NMAX];
 int dp[NMAX][NMAX];
+int dp1[NMAX];
 
 // max value of first `course` spend `days` days
 int foo(int course, int days) {
@@ -28,15 +29,27 @@ int main() {
     rdIn("data.txt");
 
     while (~scanf("%d %d", &n, &m) and n) {
-        memset(dp, 0, sizeof(dp));
-
         for (int i = 1; i <= n; ++i) {
             for (int j = 1; j <= m; ++j) {
                 scanf("%d", &profit[i][j]);
             }
         }
-
+        // recursive
+        memset(dp, 0, sizeof(dp));
         printf("%d\n", foo(n, m));
+        // ----
+
+        // loop
+        memset(dp1, 0, sizeof(dp1));
+        for (int i = 1; i <= n; ++i) { // loop ith course
+            for (int j = m; j >= 0; --j) { // use j minutes total first i courses
+                for (int k = 1; k <= j; ++k) { // give ith course k minutes, so give first i-1 courses j-k minutes
+                    dp1[j] = max(dp1[j], dp1[j-k]+profit[i][k]);
+                }
+            }
+        }
+        printf("%d\n", dp1[m]);
+        // ----
     }
 
   
