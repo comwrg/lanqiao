@@ -8,16 +8,13 @@ int n, m;
 int father[NMAX];
 
 int find(int i) {
-    if (i == father[i])
-        return i;
-    return find(father[i]);
+    if (i != father[i])
+        father[i] = find(father[i]);
+    return father[i];
 }
 
 void merge(int a, int b) {
-    int x = find(a);
-    int y = find(b);
-    if (x != y)
-        father[x] = y;
+    father[find(a)] = find(b);
 }
 
 
