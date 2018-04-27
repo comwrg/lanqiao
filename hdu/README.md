@@ -54,6 +54,8 @@ emm..
 https://freesouls.github.io/2016/02/27/backpack-problem-II/
 个人觉得这个讲得非常好 循序渐进
 
+## 1232 (并查集)
+
 ## [1243](#head)
 dp 用 `递归` 写就Timeout， 用 `迭代` 写就AC。
 不清楚是什么情况？搞得以后都不敢用`递归`了。
