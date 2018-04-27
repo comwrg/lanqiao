@@ -4,39 +4,39 @@ ifstream fin; void rdIn(const string& filename) {fin.open(filename); if (fin.goo
 void debug(const char * __format, ...) { if (!fin.good()) return; va_list argv; __builtin_va_start(argv, __format); vprintf(__format, argv); va_end(argv); }
 
 const int NMAX = 101;
+int m;
 int data[NMAX][2];
 vector<int> tunnel[NMAX];
 int dp[NMAX][NMAX];
+bool arrived[NMAX];
 
-int dfs(int room, int ntrooper, int next = 0) {
-    int rest = ntrooper - data[room][0];
-    if (rest < 0 or (data[room][0] == 0 and rest < 1))
-        return 0;
+void dfs(int room) {
+    arrived[room] = true;
+    for (int i = data[room][0]; i <= m; ++i) {
+        dp[room][i] = data[room][1];
+    }
 
-    if (dp[room][ntrooper])
-        return dp[room][ntrooper];
-
-    int r = 0;
-    for (int i = next; i < tunnel[room].size(); ++i) {
-        int dst = tunnel[room].at(i);
-        for (int send = 0; send <= rest; ++send) {
-            r = max(r, dfs(room, rest-send, i+1) + dfs(dst, send));
+    for (int dst : tunnel[room]) {
+        if (arrived[dst])
+            continue;
+        dfs(dst);
+        for (int i = m; i >= 0; --i) { // give room i people
+            for (int j = 1; j <= i - data[room][0]; ++j) { // give dst j people. i-j >= data[room][0] -> j <= i-data[room][0]
+                dp[room][i] = max(dp[room][i], dp[room][i-j] + dp[dst][j]);
+            }
         }
     }
-    r += data[room][1];
-    if (next == 0)
-        dp[room][ntrooper] = r;
-    return r;
 }
 
 
 int main() {
     rdIn("data.txt");
 
-    int n, m;
+    int n;
     while (~scanf("%d %d", &n, &m) and ~n) {
         memset(data, 0, sizeof(data));
         memset(dp, 0, sizeof(dp));
+        memset(arrived, 0, sizeof(arrived));
         for (auto &i : tunnel)
             i.clear();
 
@@ -48,8 +48,11 @@ int main() {
             int room, dst;
             scanf("%d %d", &room, &dst);
             tunnel[room].push_back(dst);
+            tunnel[dst].push_back(room);
         }
-        printf("%d\n", dfs(1, m));
+        if (m)
+            dfs(1);
+        printf("%d\n", dp[1][m]);
     }
 
     return 0;
