@@ -28,19 +28,6 @@ int handle_x(int x) {
     return x;
 }
 
-int foo(int x, int y) {
-    x = handle_x(x);
-    if (y == n-1)
-        return dp[x][y] = data[x][y];
-    int arr[3];
-    arr[0] = foo(x-1, y+1);
-    arr[1] = foo(x  , y+1);
-    arr[2] = foo(x+1, y+1);
-    auto min_point = min_element(arr, arr+3);
-    dp[x][y] = min(dp[x][y], data[x][y] + *min_point);
-    return dp[x][y];
-}
-
 int main() {
    rdIn("data.txt");
 
@@ -52,38 +39,52 @@ int main() {
             for (int j = 0; j < n; j++) {
                 cin >> data[i][j];
             }
+            dp[i][0] = data[i][0];
+        }
+
+        for (int j = 0; j < n-1; j++) {
+            for (int i = 0; i < m; i++) {
+                int above = handle_x(i-1);
+                int below = handle_x(i+1);
+                dp[above][j+1] = min(dp[above][j+1], dp[i][j] + data[above][j+1]);
+                dp[i    ][j+1] = min(dp[i    ][j+1], dp[i][j] + data[i    ][j+1]);
+                dp[below][j+1] = min(dp[below][j+1], dp[i][j] + data[below][j+1]);
+            }
         }
 
         int x = 0;
+        int vmin = 0x3f3f3f3f;
         for (int i = 0; i < m; i++) {
-            int v = foo( m, 0);
-            if (dp[x][0] > v) {
+            if (dp[i][n-1] < vmin) {
+                vmin = dp[i][n-1];
                 x = i;
             }
         }
-        int xx = x;
 
         // print path
-        for (int y = 0; y < n; y++) {
-            if (y != 0) {
-                int arr[3];
-                int xs[3] = {handle_x(x-1),
-                             handle_x(x  ),
-                             handle_x(x+1)};
-                sort(xs, xs+3);
-                for (int i = 0; i < 3; i++) {
-                    arr[i] = dp[xs[i]][y];
-                }
-                auto min_point = min_element(arr, arr+3);
-                auto dis = distance(arr, min_point);
-                x = xs[dis];
+        stack<int> path;
+        for (int y = n-1; y >= 0; y--) {
+            int arr[3];
+            int xs[3] = {handle_x(x-1),
+                         handle_x(x  ),
+                         handle_x(x+1)};
+            sort(xs, xs+3);
+            for (int i = 0; i < 3; i++) {
+                arr[i] = dp[xs[i]][y];
             }
-            cout << x + 1;
-            if (y != n-1)
-                cout << " ";
+            auto min_point = min_element(arr, arr+3);
+            auto dis = distance(arr, min_point);
+            x = xs[dis];
+            path.push(x+1);
         }
-        cout << endl;
-        cout << dp[xx][0] << endl;
+        while (path.size() > 1) {
+            cout << path.top() << " ";
+            path.pop();
+        }
+        cout << path.top() << endl;
+        path.pop();
+
+        cout << vmin << endl;
     }
 
     return 0;
