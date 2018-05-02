@@ -39,31 +39,30 @@ int main() {
             for (int j = 0; j < n; j++) {
                 cin >> data[i][j];
             }
-            dp[i][0] = data[i][0];
+            dp[i][n-1] = data[i][n-1];
         }
 
-        for (int j = 0; j < n-1; j++) {
+        for (int j = n-1; j > 0; j--) {
             for (int i = 0; i < m; i++) {
                 int above = handle_x(i-1);
                 int below = handle_x(i+1);
-                dp[above][j+1] = min(dp[above][j+1], dp[i][j] + data[above][j+1]);
-                dp[i    ][j+1] = min(dp[i    ][j+1], dp[i][j] + data[i    ][j+1]);
-                dp[below][j+1] = min(dp[below][j+1], dp[i][j] + data[below][j+1]);
+                dp[above][j-1] = min(dp[above][j-1], dp[i][j] + data[above][j-1]);
+                dp[i    ][j-1] = min(dp[i    ][j-1], dp[i][j] + data[i    ][j-1]);
+                dp[below][j-1] = min(dp[below][j-1], dp[i][j] + data[below][j-1]);
             }
         }
 
         int x = 0;
         int vmin = 0x3f3f3f3f;
         for (int i = 0; i < m; i++) {
-            if (dp[i][n-1] < vmin) {
-                vmin = dp[i][n-1];
+            if (dp[i][0] < vmin) {
+                vmin = dp[i][0];
                 x = i;
             }
         }
 
         // print path
-        stack<int> path;
-        for (int y = n-1; y >= 0; y--) {
+        for (int y = 0; y < n; y++) {
             int arr[3];
             int xs[3] = {handle_x(x-1),
                          handle_x(x  ),
@@ -75,15 +74,12 @@ int main() {
             auto min_point = min_element(arr, arr+3);
             auto dis = distance(arr, min_point);
             x = xs[dis];
-            path.push(x+1);
+            if (y) {
+                cout << " ";
+            }
+            cout << x+1;
         }
-        while (path.size() > 1) {
-            cout << path.top() << " ";
-            path.pop();
-        }
-        cout << path.top() << endl;
-        path.pop();
-
+        cout << endl;
         cout << vmin << endl;
     }
 
