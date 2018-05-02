@@ -32,14 +32,12 @@ int foo(int x, int y) {
     x = handle_x(x);
     if (y == n-1)
         return dp[x][y] = data[x][y];
-    if (dp[x][y])
-        return dp[x][y];
     int arr[3];
     arr[0] = foo(x-1, y+1);
     arr[1] = foo(x  , y+1);
     arr[2] = foo(x+1, y+1);
     auto min_point = min_element(arr, arr+3);
-    dp[x][y] = data[x][y] + *min_point;
+    dp[x][y] = min(dp[x][y], data[x][y] + *min_point);
     return dp[x][y];
 }
 
@@ -48,7 +46,7 @@ int main() {
 
     while (cin >> m >> n) {
         memset(data, 0, sizeof(data));
-        memset(dp, 0, sizeof(dp));
+        memset(dp, 0x3f, sizeof(dp));
 
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
