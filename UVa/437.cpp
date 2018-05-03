@@ -17,6 +17,7 @@ ifstream fin; void rdIn(const string& filename) {fin.open(filename); if (fin.goo
 int n;
 int data[30][3];
 int dp[30][3];
+int ncase = 0;
 
 void index2side(int i, int j, int &x, int &y) {
     switch (j) {
@@ -71,7 +72,7 @@ int main() {
                 mx = max(mx, foo(i, j));
             }
         }
-        cout << mx << endl;
+        printf("Case %d: maximum height = %d\n", ++ncase, mx);
     }
 
   
