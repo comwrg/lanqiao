@@ -14,7 +14,7 @@ ifstream fin; void rdIn(const string& filename) {fin.open(filename); if (fin.goo
 int n;
 int data[1000][2];
 int pass[1000];
-int d[1000][1000];
+double d[1000][1000];
 
 double dist(int a, int b) {
     if (a < b)
@@ -23,7 +23,7 @@ double dist(int a, int b) {
         return d[a][b];
     int side1 = data[a][0] - data[b][0];
     int side2 = data[a][1] - data[b][1];
-    return sqrt(pow(side1, 2) + pow(side2, 2));
+    return d[a][b] = sqrt(pow(side1, 2) + pow(side2, 2));
 }
 
 double foo(int a = 0, int b = 0) {
@@ -34,11 +34,12 @@ double foo(int a = 0, int b = 0) {
     }
     double d1 = dist(a, a+1);
     double d2 = dist(b, a+1);
-    if (d1 < d2) {
-        return d1 + foo(a+1, b); // point a -> point a+1
-    } else {
-        return d2 + foo(a, a+1); // point b -> point a+1
-    }
+    /* if (d1 < d2) { */
+    /*     return d1 + foo(a+1, b); // point a -> point a+1 */
+    /* } else { */
+    /*     return d2 + foo(a, a+1); // point b -> point a+1 */
+    /* } */
+    return min(d1 + foo(a+1, b), d2 + foo(a, a+1));
 }
 
 int main() {
