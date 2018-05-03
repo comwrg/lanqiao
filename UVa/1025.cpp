@@ -18,11 +18,12 @@ const int INF = 0xFFFF;
 
 int n; // number of stations. (2 <= n <= 50)
 int T; // time T to meet a Spy in the station n. (0 <= T <= 200)
-int t[100]; // travel time, t[i] mean time from station i to station i+1. (1 <= ti <= 70)
+int t[200]; // travel time, t[i] mean time from station i to station i+1. (1 <= ti <= 70)
 int M[2];
-int d[2][100]; // departure time, (0 <= di <= 250)
-int has_train[200][100][2]; // [time][station][direction]
-int dp[200][200];
+int d[2][200]; // departure time, (0 <= di <= 250)
+int has_train[300][200][2]; // [time][station][direction]
+int dp[300][300];
+int ncase = 0;
 
 int foo(int time = 0, int station = 1) {
     if (time > T || station > n) {
@@ -92,6 +93,7 @@ int main() {
             }
         }
         /////////////////////////////////////////
+        cout << "Case Number " << ++ncase << ": ";
         int wait = foo();
         if (wait < INF) {
             cout << wait << endl;
