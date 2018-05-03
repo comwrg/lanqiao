@@ -23,6 +23,7 @@ int M[2];
 int d[2][100]; // departure time, (0 <= di <= 250)
 int has_train[200][100][2]; // [time][station][direction]
 int dp[200][200];
+int ncase = 0;
 
 int foo(int time = 0, int station = 1) {
     if (time > T || station > n) {
@@ -92,6 +93,7 @@ int main() {
             }
         }
         /////////////////////////////////////////
+        cout << "Case Number " << ++ncase << ": ";
         int wait = foo();
         if (wait < INF) {
             cout << wait << endl;
