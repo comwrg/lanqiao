@@ -11,34 +11,16 @@
 #include <bits/stdc++.h>
 using namespace std;
 ifstream fin; void rdIn(const string& filename) {fin.open(filename); if (fin.good()) { cin.rdbuf(fin.rdbuf()); freopen(filename.c_str(), "r", stdin); } }
+
 const int INF = 0x3F3F3F3F;
+const int T_JQ = 11 * 60 + 18;
+const int T_MAX = 50 * 3*60 + T_JQ;
 
 int n; // n <= 50
 int t; // t <= 1e9
 int data[50]; // data[i] <= 3*60 = 180
-const int T_JQ = 11 * 60 + 18;
-const int MAX_T = 180 * 50 + T_JQ;
-struct node {
-    int left_time;
-    int songs;
-    node(int left_time = INF, int songs = 0) : left_time(left_time), songs(songs) {};
-    bool operator <(const node &rhs) const {
-        return this->left_time < rhs.left_time;
-    }
-};
-
-node foo(node nd, int songs) {
-    if (nd.left_time < 1) {
-        return INF;
-    }
-    if (songs == n) {
-        return nd;
-    }
-    auto a = foo(nd.left_time, songs+1);
-    auto b = foo(nd.left_time - data[songs], songs+1);
-    b.songs++;
-    return min(a, b);
-}
+int dp[T_MAX];
+int ts[T_MAX];
 
 int main() {
     rdIn("data.txt");
@@ -46,15 +28,28 @@ int main() {
     int m;
     cin >> m;
     for (int i = 0; i < m; i++) {
-        memset(data, 0, sizeof(data));
+        memset(dp, 0, sizeof(dp));
+        memset(ts, 0, sizeof(ts));
 
         cin >> n >> t;
         for (int j = 0; j < n; j++) {
             cin >> data[j];
         }
 
-        auto n = foo(t, 0);
-        cout << n.songs + 1 << " " << t - n.left_time + T_JQ << endl;
+        for (int i = 0; i < n; i++) {
+            for (int j = t; j > data[i]; j--) {
+                int b = j - data[i];
+                int k = dp[b] + 1;
+                if (k > dp[j]) {
+                    dp[j] = k;
+                    ts[j] = ts[b] + data[i];
+                } else if (k == dp[j]) {
+                    ts[j] = max(ts[j], ts[b] + data[i]);
+                }
+            }
+        }
+
+        printf("Case %d: %d %d\n", i+1, dp[t]+1, ts[t]+T_JQ);
 
     }
 
