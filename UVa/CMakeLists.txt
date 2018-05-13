@@ -9,3 +9,6 @@ add_executable(437 437.cpp)
 add_executable(1025 1025.cpp)
 add_executable(1347 1347.cpp)
 add_executable(12563 12563.cpp)
+
+# greedy
+add_executable(120 120.cpp)
