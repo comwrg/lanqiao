@@ -12,3 +12,4 @@ add_executable(12563 12563.cpp)
 
 # greedy
 add_executable(120 120.cpp)
+add_executable(1605 1605.cpp)
