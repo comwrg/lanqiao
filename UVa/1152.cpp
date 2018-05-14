@@ -1,8 +1,9 @@
 #include <iostream>
-#include <map>
+#include <unordered_map>
 using namespace std;
 
 int data[4][4000];
+unordered_map<int, int> sum;
 
 int main() {
     int t;
@@ -14,18 +15,21 @@ int main() {
             scanf("%d %d %d %d", &data[0][i], &data[1][i], &data[2][i], &data[3][i]);
         }
 
-        map<int, int> sum[2];
+        sum.clear();
         for (int i = 0; i < n; ++i) {
             for (int j = 0; j < n; ++j) {
-                ++sum[0][data[0][i] + data[1][j]];
-                ++sum[1][data[2][i] + data[3][j]];
+                ++sum[data[0][i] + data[1][j]];
             }
         }
         int ans = 0;
-        for (auto it = sum[0].begin(); it != sum[0].end(); ++it) {
-            ans += it->second * sum[1][-it->first];
+        for (int i = 0; i < n; ++i) {
+            for (int j = 0; j < n; ++j) {
+                ans += sum[-(data[2][i] + data[3][j])];
+            }
         }
         printf("%d\n", ans);
+        if (t)
+            printf("\n");
     }
     
     return 0;
