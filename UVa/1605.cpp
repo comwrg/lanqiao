@@ -12,20 +12,21 @@ int main() {
     int n;
     int ans[50][50];
     while (~scanf("%d", &n)) {
-        printf("%d %d 2\n", n, n);
+        printf("2 %d %d\n", n, n);
         for (int i = 0; i < n; ++i) {
             for (int j = 0; j < n; ++j) {
-                printf("%c ", chs[i]);
+                printf("%c", chs[i]);
             }
             printf("\n");
         }
         printf("\n");
         for (int i = 0; i < n; ++i) {
             for (int j = 0; j < n; ++j) {
-                printf("%c ", chs[j]);
+                printf("%c", chs[j]);
             }
             printf("\n");
         }
+        printf("\n");
     }
     return 0;
 }
