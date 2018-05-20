@@ -17,38 +17,40 @@ int main() {
         while (n--) {
             int w; scanf("%d", &w);
             vector<int> data;
-            queue<int> que;
-            set<int> dp;
             while (w--) {
                 int v; scanf("%d", &v);
                 data.push_back(v);
-                que.push(v);
-                dp.insert(v);
             }
-            for (int i = 0; i < s-1; ++i) {
-                int size = que.size();
-                while (size--) {
-                    int v = que.front(); que.pop();
-                    for (int i : data) {
-                        int d = v + i;
-                        dp.insert(d);
-                        que.push(d);
-                    }
+            int dp[0xfffff];
+            dp[0] = 0;
+            int n = 0;
+            while (++n) {
+                dp[n] = 0x3f3f3f3f;
+                for (int i : data) {
+                    if (n - i >= 0)
+                        dp[n] = min(dp[n], dp[n-i] + 1);
                 }
-            }
-            int last = 0;
-            int seq = 0;
-            for (int i : dp) {
-                if (i - last == 1) {
-                    ++seq;
-                } else {
+                if (dp[n] > s) {
+                    --n;
                     break;
                 }
-                last = i;
             }
-            if (seq >= ans) {
-                ans = seq;
+
+            if (n > ans) {
+                ans = n;
                 vans = data;
+            } else if (n == ans) {
+                auto comp = [](vector<int> data, vector<int> vans) {
+                    if (data.size() > vans.size())
+                        return true;
+                    if (data.size() < vans.size())
+                        return false;
+                    sort(data.begin(), data.end(), greater<int>());
+                    sort(vans.begin(), vans.end(), greater<int>());
+                    return data > vans;
+                };
+                if (comp(vans, data))
+                    vans = data;
             }
         }
         printf("max coverage =%4d :", ans);
